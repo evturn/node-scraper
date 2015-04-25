@@ -27,7 +27,13 @@ app.get('/scrape', function(req, res) {
 				json.rating  = rating;
 			});
 		}
-	})
+
+		fs.writeFile('output.json', JSON.stringify(json, null, 4), function(err) {
+			console.log('File successfully written in directory for output.json')
+		})
+
+		res.send('Check the console for information.');
+	});
 });
 
 app.listen('8081')
