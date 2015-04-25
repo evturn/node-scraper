@@ -15,6 +15,9 @@ app.get('/scrape', function(req, res) {
 			var title, release, rating;
 			var json = {title : "", release : "", rating : ""};
 
+			$('.header').filter(function() {
+				var data = $(this);
+			});
 
 		}
 	})
