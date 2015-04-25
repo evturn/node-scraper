@@ -9,9 +9,9 @@ app.get('/scrape', function(req, res) {
 
 	request(url, function(error, response, html) {
 		if(!error) {
-			var $ = cheerio.load(html);
+			var $ 				 = cheerio.load(html);
 			var title, release, rating;
-			var json = {title : "", release : "", rating : ""};
+			var json 			 = {title : "", release : "", rating : ""};
 
 			$('.header').filter(function() {
 				var data 		 = $(this);
@@ -21,6 +21,11 @@ app.get('/scrape', function(req, res) {
 				json.release = release;
 			});
 
+			$('.star-box-giga-star').filter(function() {
+				var data 		 = $(this);
+				rating 			 = data.text();
+				json.rating  = rating;
+			});
 		}
 	})
 });
