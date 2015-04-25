@@ -9,16 +9,16 @@ app.get('/scrape', function(req, res) {
 
 	request(url, function(error, response, html) {
 		if(!error) {
-
 			var $ = cheerio.load(html);
-
 			var title, release, rating;
 			var json = {title : "", release : "", rating : ""};
 
 			$('.header').filter(function() {
-				var data = $(this);
-				title = data.children().first().text();
-				json.title = title;
+				var data 		 = $(this);
+				title 	 		 = data.children().first().text();
+				release 		 = data.children().last().children().text();
+				json.title 	 = title;
+				json.release = release;
 			});
 
 		}
