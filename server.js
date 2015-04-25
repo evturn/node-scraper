@@ -17,6 +17,8 @@ app.get('/scrape', function(req, res) {
 
 			$('.header').filter(function() {
 				var data = $(this);
+				title = data.children().first().text();
+				json.title = title;
 			});
 
 		}
